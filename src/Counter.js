@@ -5,12 +5,6 @@ import { bindActionCreators } from "redux";
 import { actionCreator } from "../src/action/CounterAction";
 
 class Counter extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      count: 0
-    };
-  }
   increment = () => {
     this.props.dispatch({ type: "INCREMENT" });
   };
@@ -50,10 +44,14 @@ class Counter extends Component {
 //   dispatch => bindActionCreators({ ...actionCreator }, dispatch)
 // )(Counter);
 
-function mapStateToProps(state) {
+// function mapStateToProps(state) {
+//   return {
+//     count: state.count
+//   };
+// }
+
+export default connect(state => {
   return {
     count: state.count
   };
-}
-
-export default connect(mapStateToProps)(Counter);
+})(Counter);
